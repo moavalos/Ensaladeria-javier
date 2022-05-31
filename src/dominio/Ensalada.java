@@ -11,7 +11,7 @@ public class Ensalada {
 
 	public Ensalada(String nombreDeLaEnsalada) {
 		this.nombreDeLaEnsalada = nombreDeLaEnsalada;
-		this.ingredientes = new Ingredientes[20];
+		this.ingredientes = new Ingredientes[50];
 	}
 
 	public Ingredientes[] getIngredientes() {
@@ -28,7 +28,18 @@ public class Ensalada {
 	}
 
 	public Boolean paraCeliacos() {
-		return false;
+		/* devuelve true si ningun ingrediente es de origen TACC. */
+		Boolean origenTacc = false;
+		for (int i = 0; i < this.ingredientes.length; i++) {
+			if (this.ingredientes[i].getOrigen() == Origen.TACC) {
+				origenTacc = false;
+				return origenTacc;
+			} else {
+				continue;
+			}
+		}
+		origenTacc = true;
+		return origenTacc;
 	}
 
 	public Boolean paraVegetarianos() {
@@ -65,5 +76,4 @@ public class Ensalada {
 		this.ingredientes = ingredientes;
 	}
 
-	
 }
