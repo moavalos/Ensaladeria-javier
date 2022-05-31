@@ -33,4 +33,40 @@ public class Pedido {
 		return aux;
 	}
 
+	public Ensalada buscarEnsalada(String nombreEnsalada) {
+		for (int i = 0; i < this.ensaladas.length; i++) {
+			if (this.ensaladas[i] == null) {
+				continue;
+			}
+			if (this.ensaladas[i].getNombre().equals(nombreEnsalada)) {
+				return this.ensaladas[i];
+			}
+		}
+		return null;
+	}
+
+	public String getNombreDelCliente() {
+		return nombreDelCliente;
+	}
+
+	public void setNombreDelCliente(String nombreDelCliente) {
+		this.nombreDelCliente = nombreDelCliente;
+	}
+
+	public Ensalada[] getEnsaladas() {
+		return ensaladas;
+	}
+
+	public void setEnsaladas(Ensalada[] ensaladas) {
+		this.ensaladas = ensaladas;
+	}
+
+	public Integer getContadorEnsaladas() {
+		return contadorEnsaladas;
+	}
+
+	public void setContadorEnsaladas(Integer contadorEnsaladas) {
+		this.contadorEnsaladas = contadorEnsaladas;
+	}
+	
 }
