@@ -43,18 +43,51 @@ public class Ensalada {
 	}
 
 	public Boolean paraVegetarianos() {
-		return false;
+		/* devuelve true si ningun ingrediente es de origen ANIMAL. */
+		/* muy confuso */
+		Boolean apto = false;
+		for (int i = 0; i < this.ingredientes.length; i++) {
+			if (!(this.ingredientes[i].getOrigen() == Origen.ANIMAL)) {
+				apto = true;
+				return apto;
+			}
+		}
+		return apto;
 	}
 
 	public boolean paraVeggies() { // emoji con ojos estrella
-		return false;
+		/* devuelve true si ningun ingrediente es de origen ANIMAL ni LECHE ni HUEVO */
+		for (int i = 0; i < this.ingredientes.length; i++) {
+			if (this.ingredientes[i].getOrigen() == Origen.ANIMAL && this.ingredientes[i].getOrigen() == Origen.LECHE
+					&& this.ingredientes[i].getOrigen() == Origen.HUEVO) {
+				return false;
+			} else {
+				continue;
+			}
+		}
+		return true;
 	}
 
-	@Override
 	public String toString() {
-		return "Ensalada [nombreDeLaEnsalada=" + nombreDeLaEnsalada + ", ingredientes=" + Arrays.toString(ingredientes)
-				+ ", contadorIngredientes=" + contadorIngredientes + "]";
+		/*
+		 * Devuelve un String con el nombre de la ensalada y el detalle de los
+		 * ingredientes que la componen
+		 */
+		String ingredientes = "";
+		for (int i = 0; i < this.ingredientes.length; i++) {
+			if (this.ingredientes[i] == null) {
+				continue;
+			}
+			ingredientes += this.ingredientes[i].toString() + ",";
+		}
+		return "Ensalada: " + this.getNombre() + ", Ingredientes: " + ingredientes + ".";
 	}
+
+	/*
+	 * @Override public String toString() { return "Ensalada [nombreDeLaEnsalada=" +
+	 * nombreDeLaEnsalada + ", ingredientes=" + Arrays.toString(ingredientes) +
+	 * ", contadorIngredientes=" + contadorIngredientes + "]"; }
+	 */
 
 	public String getNombreDeLaEnsalada() {
 		return nombreDeLaEnsalada;
